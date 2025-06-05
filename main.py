@@ -7,13 +7,13 @@ print("Run code!!!!!!!!!!!!!!!!!!!!!")
 
 
 def number_generator():
-  """generates a random number from 0 to the highest number in the data array"""
+  """generates a random number from 0 to the highest number in the data array."""
   return randint(0, 24)
 
 
 # Ensure people are different
 def compare_people(person):
-  """compares the first person to random second perosn and ensures they are different"""
+  """compares the first person to random second perosn and ensures they are different."""
   second_option = data[number_generator()]
   while person['name'] == second_option['name']:
     second_option = data[number_generator()]
@@ -22,13 +22,18 @@ def compare_people(person):
 
 # Compare follower function
 def compare_follower(person1, person2):
-  """Checks who has the highest follower count"""
+  """Checks who has the highest follower count."""
   if person1['follower_count'] == person2['follower_count']:
     return "tie",
   elif person1['follower_count'] > person2['follower_count']:
     return person1
   else:
     return person2
+  
+def format_data(account):
+  """Format the account data into printable format."""
+  return  f"Compare A: {account['name']}, {account['description']}, from {account['country']}"
+
 
 
 def higher_lower():
@@ -40,9 +45,9 @@ def higher_lower():
   print(art.logo)
 
   # Print description, excluding follower count
-  print(f"Compare A: {first_person['name']}, {first_person['description']}, from {first_person['country']}")
+  print(f"Compare A: {format_data(first_person)}")
   print(art.vs)
-  print(f"Agains B: {second_person['name']}, {second_person['description']}, from {second_person['country']}")
+  print(f"Against B: {format_data(second_person)}")
 
   answer = compare_follower(first_person, second_person)
 
@@ -65,9 +70,9 @@ def higher_lower():
       print(f"You're right! Current score: {final_score}")
     first_person = answer
     second_person = compare_people(first_person)
-    print(f"Compare A: {first_person['name']}, {first_person['description']}, from {first_person['country']}")
+    print(f"Compare A: {format_data(first_person)}")
     print(art.vs)
-    print(f"Against B: {second_person['name']}, {second_person['description']}, from {second_person['country']}")
+    print(f"Against B: {format_data(second_person)}")
 
     answer = compare_follower(first_person, second_person)
 
