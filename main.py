@@ -32,6 +32,7 @@ def compare_follower(person1, person2):
 
 
 def higher_lower():
+  """Start the game to guess which of the two peple have the most instagram followers"""
   first_person = data[number_generator()]
   second_person = compare_people(first_person)
   final_score = 0
@@ -54,11 +55,14 @@ def higher_lower():
     guess = second_person
 
 
-  # If right go again and if wrong end game
-  while guess == answer:
-    final_score += 1
+  # If right or follower count is the same go again.
+  while guess == answer or answer == "tie":
     print(art.logo)
-    print(f"You're right! Current score: {final_score}")
+    final_score += 1
+    if answer == "tie":
+      print(f"They both have the same number of followers. Current score: {final_score}") 
+    else:
+      print(f"You're right! Current score: {final_score}")
     first_person = answer
     second_person = compare_people(first_person)
     print(f"Compare A: {first_person['name']}, {first_person['description']}, from {first_person['country']}")
@@ -74,10 +78,14 @@ def higher_lower():
     else:
       guess = second_person
 
+  # If guess is wrong, end loop
   print(f"Sorry, that's wrong. Final score: {final_score}")
 
+
+# Start game
 higher_lower()
 
+# Option to start the game again
 while input("Do you want to play again? Type 'Y' or 'N': ").lower() == 'y':
   print('\n' * 10)
   higher_lower()
