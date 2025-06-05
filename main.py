@@ -3,24 +3,20 @@ from game_data import data
 from random import randint
 import art
 
-print("Run code!!!!!!!!!!!!!!!!!!!!!")
-
 
 def number_generator():
   """generates a random number from 0 to the highest number in the data array."""
   return randint(0, 24)
 
 
-# Ensure people are different
 def compare_people(person):
-  """compares the first person to random second perosn and ensures they are different."""
+  """Compares the first person to random second perosn and ensures they are different."""
   second_option = data[number_generator()]
   while person['name'] == second_option['name']:
     second_option = data[number_generator()]
   return second_option
 
 
-# Compare follower function
 def compare_follower(person1, person2):
   """Checks who has the highest follower count."""
   if person1['follower_count'] == person2['follower_count']:
@@ -30,10 +26,10 @@ def compare_follower(person1, person2):
   else:
     return person2
   
+
 def format_data(account):
   """Format the account data into printable format."""
   return  f"Compare A: {account['name']}, {account['description']}, from {account['country']}"
-
 
 
 def higher_lower():
